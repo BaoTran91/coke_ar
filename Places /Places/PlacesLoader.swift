@@ -25,7 +25,7 @@ import CoreLocation
 
 struct PlacesLoader {
   let apiURL = "https://maps.googleapis.com/maps/api/place/"
-  let apiKey = "AIzaSyDSVXMIQv7xuZPt0tKoVJKyCNeWnXFuyKs"
+  let apiKey = ""
   
   func loadPOIS(location: CLLocation, radius: Int = 30, handler: @escaping (NSDictionary?, NSError?) -> Void) {
     print("Load pois")
