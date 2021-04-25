@@ -1,0 +1,51 @@
+ML Training tutorial:
+https://medium.com/@hunter.ley.ward/create-your-own-object-recognizer-ml-on-ios-7f8c09b461a1
+
+image recognition with video:
+https://www.raywenderlich.com/6957-building-a-museum-app-with-arkit-2
+
+Microsoft Custom Vision:
+https://www.customvision.ai/projects/ac09a6a3-484b-4e6b-9047-1d80d0b3b529#/performance
+
+Tensor Flow is in virtual environment. 
+#
+# To activate this environment, use
+#
+#     $ conda activate py_27_env
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+#
+# To activate this environment, use
+#
+#     $ conda activate tf-2
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+https://codelabs.developers.google.com/codelabs/tensorflow-for-poets/#5
+
+TURN ON TENSORBOARD GUI
+tensorboard --logdir tf_files/training_summaries &
+
+TURN OFF TENSORBOARD
+pkill -f "tensorboard"
+
+LAUNCH CLASSIFICATION SCRIPT
+IMAGE_SIZE=224
+ARCHITECTURE="mobilenet_0.50_${IMAGE_SIZE}"
+
+python -m scripts.retrain \
+  --bottleneck_dir=tf_files/bottlenecks \
+  --how_many_training_steps=500 \
+  --model_dir=tf_files/models/ \
+  --summaries_dir=tf_files/training_summaries/"${ARCHITECTURE}" \
+  --output_graph=tf_files/retrained_graph.pb \
+  --output_labels=tf_files/retrained_labels.txt \
+  --architecture="${ARCHITECTURE}" \
+  --image_dir=tf_files/flower_photos
+
+150 
